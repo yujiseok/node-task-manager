@@ -1,5 +1,5 @@
 import express from "express";
-import tasks from "./routes/tasks/JS";
+import tasks from "./routes/tasks.js";
 import connectDB from "./db/connect.js";
 import dotenv from "dotenv";
 dotenv.config();
@@ -8,12 +8,10 @@ const app = express();
 const port = 3000;
 
 // middleware
+app.use(express.static("./public"));
 app.use(express.json());
 
 // routes
-app.get("/", (req, res) => {
-  res.send("zz");
-});
 
 app.use("/api/v1/tasks", tasks);
 
